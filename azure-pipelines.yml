@@ -7,7 +7,7 @@ pool:
 variables:
   imageName: azure-pipelines-canary-k8s
   vmImageName: 'Ubuntu-16.04' 
-  dockerRegistryServiceConnection: 'azure-pipelines-canary-k8s-svc'
+  dockerRegistryServiceConnection: 'azure-container-registry'
   k8sNamespace: 'default'
   imagePullSecret: 'azure-pipelines-canary-k8s'
   imageRepository: 'azure-pipelines-canary-k8s'
@@ -54,14 +54,6 @@ stages:
               artifactName: 'manifests'
               downloadPath: '$(System.ArtifactsDirectory)/manifests'
 
-          - task: KubernetesManifest@0
-            displayName: Create imagePullSecret
-            inputs:
-              action: createSecret
-              secretName: $(imagePullSecret)
-              namespace: $(k8sNamespace)
-              dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
-              
           - task: KubernetesManifest@0
             displayName: Deploy to Kubernetes cluster
             inputs:
