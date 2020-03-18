@@ -57,6 +57,7 @@ stages:
           - task: KubernetesManifest@0
             displayName: Deploy to Kubernetes cluster
             inputs:
+              kubernetesServiceConnection: azure-pipelines-canary-k8s-svc
               action: deploy
               namespace: $(k8sNamespace)
               manifests: |
