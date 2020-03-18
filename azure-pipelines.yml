@@ -7,7 +7,7 @@ pool:
 variables:
   imageName: azure-pipelines-canary-k8s
   vmImageName: 'Ubuntu-16.04' 
-  dockerRegistryServiceConnection: 'azure-container-registry'
+  dockerRegistryServiceConnection: 'azure-pipelines-canary-k8s-svc'
   k8sNamespace: 'default'
   imagePullSecret: 'azure-pipelines-canary-k8s'
   imageRepository: 'azure-pipelines-canary-k8s'
