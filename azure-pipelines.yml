@@ -1,8 +1,9 @@
 trigger:
 - master
 
-pool:
-  vmImage: Ubuntu-16.04
+resources:
+- repo: self
+
 
 variables:
   imageName: azure-pipelines-canary-k8s
@@ -12,6 +13,7 @@ variables:
   imagePullSecret: 'faidtsmicrosvcsspringbootregistry.azurecr.io'
   imageRepository: 'azure-pipelines-canary-k8s'
   tag: '$(Build.BuildId)'
+  vmImageName: 'ubuntu-latest'
   
 stages:
 - stage: Build
