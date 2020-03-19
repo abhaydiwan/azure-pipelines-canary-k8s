@@ -9,7 +9,7 @@ variables:
   vmImageName: 'Ubuntu-16.04' 
   dockerRegistryServiceConnection: 'azure-container-registry'
   k8sNamespace: 'default'
-  imagePullSecret: 'azure-pipelines-canary-k8s'
+  imagePullSecret: 'faidtsmicrosvcsspringbootregistry.azurecr.io'
   imageRepository: 'azure-pipelines-canary-k8s'
   tag: '$(Build.BuildId)'
   
