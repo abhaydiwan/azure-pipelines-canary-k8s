@@ -7,7 +7,6 @@ resources:
 
 variables:
   imageName: azure-pipelines-canary-k8s
-  vmImageName: 'Ubuntu-16.04' 
   dockerRegistryServiceConnection: 'azure-container-registry'
   k8sNamespace: 'default'
   imagePullSecret: 'faidtsmicrosvcsspringbootregistry.azurecr.io'
