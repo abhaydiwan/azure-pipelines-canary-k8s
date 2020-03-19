@@ -11,7 +11,7 @@ variables:
   k8sNamespace: 'default'
   imagePullSecret: 'azure-pipelines-canary-k8s'
   imageRepository: 'azure-pipelines-canary-k8s'
-
+  tag: '$(Build.BuildId)'
   
 stages:
 - stage: Build
@@ -30,7 +30,7 @@ stages:
         command: buildAndPush
         Dockerfile: app/Dockerfile
         tags: |
-          $(Build.BuildId)
+          $(tag)
     - task: PublishPipelineArtifact@0
       inputs:
         artifactName: 'manifests'
