@@ -48,8 +48,10 @@ stages:
          manifests/service.yml
         TargetFolder: '$(Build.ArtifactStagingDirectory)'
           
-    - task: PublishBuildArtifacts@1
-      displayName: 'Publish Artifact: drop'    
+    - task: PublishPipelineArtifact@0
+      inputs:
+        artifactName: 'manifests'
+        targetPath: 'manifests'     
 
 - stage: Deploy
   displayName: Deploy stage
@@ -66,7 +68,7 @@ stages:
           steps:
           - task: DownloadPipelineArtifact@1
             inputs:
-              artifactName: 'drop'
+              artifactName: 'manifests'
               downloadPath: '$(System.ArtifactsDirectory)/manifests'
 
           - task: KubernetesManifest@0
