@@ -78,6 +78,8 @@ stages:
               kubernetesServiceConnection: azure-pipelines-canary-k8s-svc
               action: deploy
               namespace: $(k8sNamespace)
+              strategy: $(strategy.name)
+              percentage: $(strategy.increment)
               manifests: |
                 $(System.ArtifactsDirectory)/manifests/deployment.yml
                 $(System.ArtifactsDirectory)/manifests/service.yml
