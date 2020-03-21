@@ -61,10 +61,9 @@ stages:
     displayName: Deploy job
     pool:
       vmImage: $(vmImageName)
-    environment: 'canarytesting'
+    environment: 'faidev'
     strategy:
-      canary:
-        increments: [10,20]
+      runOnce:
         deploy:
           steps:
           - task: DownloadPipelineArtifact@1
@@ -78,8 +77,8 @@ stages:
               kubernetesServiceConnection: azure-pipelines-canary-k8s-svc
               action: deploy
               namespace: $(k8sNamespace)
-              strategy: $(strategy.name)
-              percentage: $(strategy.increment)
+              strategy: canary
+              percentage: 25
               manifests: |
                 $(System.ArtifactsDirectory)/manifests/deployment.yml
                 $(System.ArtifactsDirectory)/manifests/service.yml
