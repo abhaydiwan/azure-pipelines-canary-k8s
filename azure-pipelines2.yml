@@ -61,7 +61,7 @@ stages:
     displayName: Deploy job
     pool:
       vmImage: $(vmImageName)
-    environment: 'faidev'
+    environment: 'canarytesting'
     strategy:
       canary:
         increments: [10,20]
