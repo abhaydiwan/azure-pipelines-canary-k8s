@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sampleapp
+  name: microservice
   labels:
-    app: sampleapp
+    app: microservice
 spec:
   replicas: 4
   selector:
     matchLabels:
-      app: sampleapp
+      app: microservice
   template:
     metadata:
       annotations:
         prometheus.io/scrape: "true"
       labels:
-        app: sampleapp
+        app: microservice
     spec:
       containers:
-      - name: sampleapp
+      - name: microservice
         #replace <foobar> with your container registry. Example: contosodemo.azurecr.io
         image: faidtsmicrosvcsspringbootregistry.azurecr.io/azure-pipelines-canary-k8s:#{Build.BuildId}#
         imagePullPolicy: Always

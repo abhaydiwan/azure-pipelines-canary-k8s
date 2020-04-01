@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: sampleapp
+  name: microservice
   labels:
-    app: sampleapp
+    app: microservice
 spec:
   selector:
-    app: sampleapp
+    app: microservice
   ports:
   - name: metrics
     port: 8000
