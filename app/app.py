@@ -4,7 +4,7 @@ from random import randrange
 from flask import Flask
 from prometheus_client import start_http_server, Counter
 
-app = Flask('sampleapp')
+app = Flask('microservice')
 c = Counter('requests', 'Number of requests served, by custom_status', ['custom_status'])
 
 success_rate = 20
